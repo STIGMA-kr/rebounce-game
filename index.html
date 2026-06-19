@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rebound Node</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="top-bar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>REBOUND NODE</span>
+        </div>
+
+        <div class="hud" aria-label="game status">
+          <div>
+            <span class="hud-label">LEVEL</span>
+            <strong id="level-value">1</strong>
+          </div>
+          <div>
+            <span class="hud-label">ROUND</span>
+            <strong id="phase-value">잡몹</strong>
+          </div>
+          <div>
+            <span class="hud-label">HP</span>
+            <strong id="health-value">10</strong>
+          </div>
+          <div>
+            <span class="hud-label">TARGET</span>
+            <strong id="target-value">0</strong>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <button id="start-button" class="icon-button" type="button" aria-label="start or restart">▶</button>
+          <button id="pause-button" class="icon-button" type="button" aria-label="pause">Ⅱ</button>
+        </div>
+      </header>
+
+      <main class="game-wrap">
+        <canvas id="game-canvas" width="960" height="640" aria-label="Rebound Node game screen"></canvas>
+
+        <section id="overlay" class="overlay">
+          <h1 id="overlay-title">REBOUND NODE</h1>
+          <p id="overlay-copy">LEVEL 1</p>
+          <button id="overlay-button" type="button">START</button>
+        </section>
+      </main>
+
+      <footer class="lane-strip" aria-label="node lanes">
+        <span>A</span>
+        <span>S</span>
+        <span>D</span>
+        <span>L</span>
+        <span>;</span>
+        <span>'</span>
+      </footer>
+    </div>
+
+    <script src="js/game.js"></script>
+  </body>
+</html>

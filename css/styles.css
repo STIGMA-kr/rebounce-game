@@ -1,0 +1,249 @@
+:root {
+  color-scheme: dark;
+  --bg: #101012;
+  --panel: #19191d;
+  --panel-2: #222228;
+  --text: #f3efe7;
+  --muted: #9b9aa3;
+  --line: rgba(255, 255, 255, 0.12);
+  --cyan: #30d5c8;
+  --amber: #f7b84b;
+  --rose: #ef476f;
+  --green: #76e06f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 34%),
+    radial-gradient(circle at 50% 0%, rgba(247, 184, 75, 0.08), transparent 28%),
+    var(--bg);
+  color: var(--text);
+  font-family:
+    Inter, Pretendard, "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1180px, 100vw);
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 14px;
+  padding: 18px;
+}
+
+.top-bar {
+  min-height: 70px;
+  display: grid;
+  grid-template-columns: minmax(170px, 1fr) auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  background: rgba(25, 25, 29, 0.88);
+  backdrop-filter: blur(12px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.brand-mark {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border: 3px solid var(--cyan);
+  background: var(--rose);
+  box-shadow: 0 0 18px rgba(48, 213, 200, 0.38);
+  transform: rotate(45deg);
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(78px, 1fr));
+  gap: 8px;
+}
+
+.hud > div {
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+}
+
+.hud-label {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.hud strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 17px;
+  line-height: 1.1;
+}
+
+.top-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-button,
+#overlay-button {
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #29292f;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.icon-button:hover,
+#overlay-button:hover {
+  border-color: var(--cyan);
+}
+
+.icon-button:active,
+#overlay-button:active {
+  transform: translateY(1px);
+}
+
+.game-wrap {
+  position: relative;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #0f0f12;
+}
+
+#game-canvas {
+  width: min(100%, calc((100vh - 150px) * 1.5));
+  max-width: 100%;
+  aspect-ratio: 3 / 2;
+  display: block;
+  image-rendering: auto;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  padding: 24px;
+  background: rgba(16, 16, 18, 0.72);
+  text-align: center;
+}
+
+.overlay.is-hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.overlay h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(34px, 7vw, 78px);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.overlay p {
+  min-height: 24px;
+  margin: 0;
+  color: var(--amber);
+  font-weight: 800;
+}
+
+#overlay-button {
+  min-width: 128px;
+  padding: 0 18px;
+  background: var(--cyan);
+  color: #091112;
+  font-weight: 900;
+}
+
+.lane-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  min-height: 54px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  background: rgba(25, 25, 29, 0.88);
+}
+
+.lane-strip span {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: #222228;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .top-bar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+
+  .hud {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hud > div {
+    padding: 7px 8px;
+  }
+
+  .hud strong {
+    font-size: 15px;
+  }
+
+  #game-canvas {
+    width: 100%;
+  }
+}
